@@ -13,7 +13,7 @@ https://github.com/viniciusgrp/clientsBook-backend
 Após seguir os passos do README.md presente no repositorio da API, agora é necessário instalar as dependencias.
 Para isso rode o seguinte comando no terminal: yarn install
 
-O projeto está configurado para rodar no deploy, localmente será necessário alterar a baseURL da API, para isso vá até>
+O projeto está configurado para rodar no deploy, para rodar localmente será necessário alterar a baseURL da API, para isso vá até:
 
 src/services/api.ts
 
