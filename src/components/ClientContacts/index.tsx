@@ -63,7 +63,9 @@ export const ClientContacts = ({clientId, setPage}: any) => {
                         <p>{contact.name}</p>
                         <p>{contact.email}</p>
                         <p>{contact.telephone}</p>
-                        <p>{contact.linkedin}</p>
+                        <a target={"_blank"} href={`https://linkedin.com/in/${contact.linkedin}`}>
+                          {`LinkedIn/${contact.linkedin}`}
+                        </a>
                         <p onClick={() => {
                             setShowModal(true)
                             setTypeModal("edit")
