@@ -97,7 +97,7 @@ export const Dashboard = () => {
                         <p>{client.name}</p>
                         <p>{client.email}</p>
                         <p>{client.telephone}</p>
-                        <a href={`https://linkedin.com/in/${client.linkedin}`}>
+                        <a target={"_blank"} href={`https://linkedin.com/in/${client.linkedin}`}>
                           {`LinkedIn/${client.linkedin}`}
                         </a>
                         <p className="contactBook">

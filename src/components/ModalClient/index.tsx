@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 import { ModalClientStyle } from "./style";
 import { Dispatch, SetStateAction, useEffect } from "react";
+import { toast } from 'react-toastify';
 
 interface IProps {
   setShowModal: Dispatch<SetStateAction<boolean>>;
@@ -27,8 +28,10 @@ export const ModalClient = ({ setShowModal, typeModal, clientId, clients, contac
             api.defaults.headers.common = { Authorization: `bearer ${token}` };
             const { data } = await api.post("/clients", body);
             setShowModal(false);
+            toast.success("Cliente cadastrado com sucesso!")
           } catch (error) {
             console.log(error);
+            toast.error("Erro ao cadastrar, confirme que TODOS os campos foram preenchidos corretamente")
           }
     } else {
         try {
@@ -36,8 +39,10 @@ export const ModalClient = ({ setShowModal, typeModal, clientId, clients, contac
             api.defaults.headers.common = { Authorization: `bearer ${token}` };
             const { data } = await api.post(`/contacts/${clientId}`, body);
             setShowModal(false);
+            toast.success("Contato cadastrado com sucesso!")
           } catch (error) {
             console.log(error);
+            toast.error("Erro ao cadastrar, confirme que TODOS os campos foram preenchidos corretamente")
           }
     }
   };
@@ -64,8 +69,10 @@ export const ModalClient = ({ setShowModal, typeModal, clientId, clients, contac
             api.defaults.headers.common = { Authorization: `bearer ${token}` };
             const { data } = await api.patch(`/clients/id/${clientId}`, body);
             setShowModal(false);
+            toast.success("Cliente editado com sucesso!")
           } catch (error) {
             console.log(error);
+            toast.error("Erro ao editar, confirme que TODOS os campos foram preenchidos corretamente")
           }
     } else {
         try {
@@ -73,8 +80,10 @@ export const ModalClient = ({ setShowModal, typeModal, clientId, clients, contac
             api.defaults.headers.common = { Authorization: `bearer ${token}` };
             const { data } = await api.patch(`/contacts/${clientId}`, body);
             setShowModal(false);
+            toast.success("Contato editado com sucesso!")
           } catch (error) {
             console.log(error);
+            toast.error("Erro ao editar, confirme que TODOS os campos foram preenchidos corretamente")
           }
     }
   };
@@ -89,11 +98,11 @@ export const ModalClient = ({ setShowModal, typeModal, clientId, clients, contac
               : handleSubmit(editClient)
           }
         >
-          {typeModal === "add" ? (
+          {typeModal === "add" ? contactOrClient === 'client' ? (
             <h2>Adicionar cliente</h2>
-          ) : (
+          ) : (<h2>Adicionar contato</h2>) : contactOrClient === 'client' ? (
             <h2>Editar cliente</h2>
-          )}
+          ) : (<h2>Editar contato</h2>)}
           <button onClick={() => setShowModal(false)} className="closeModal">
             X
           </button>

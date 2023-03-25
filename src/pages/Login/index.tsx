@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
+import { toast } from 'react-toastify';
 
 interface IFormData {
     email: string;
@@ -27,6 +28,7 @@ export const Login = () => {
           localStorage.setItem("@TOKEN", data.token);
           navigate('/dashboard')
     } catch (error) {
+        toast.error('Erro ao fazer login, verifique suas credenciais')
         console.log(error)
     }
   };

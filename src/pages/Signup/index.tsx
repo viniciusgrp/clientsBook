@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header"
 import { api } from "../../services/api";
 import { SignupStyle } from "./style"
+import { toast } from 'react-toastify';
 
 interface IFormData {
     name: string;
@@ -29,8 +30,10 @@ export const Signup = () => {
               password: infos.password
           })
           navigate('/login')
+          toast.success("Conta cadastrada com sucesso")
       } catch (error) {
         console.log(error)
+        toast.error("Erro ao realizar o cadastro, confirme que todos os campos foram preenchidos corretamente")
       }
   }
       

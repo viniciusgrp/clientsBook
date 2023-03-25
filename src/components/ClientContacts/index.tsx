@@ -37,7 +37,7 @@ export const ClientContacts = ({clientId, setPage}: any) => {
     return (
         <ClientContactsStyle>
             {showModal && (
-        <ModalClient setShowModal={setShowModal} typeModal={typeModal} contactOrClient="contact" clientId={contactId} clients={contacts}/>
+        <ModalClient setShowModal={setShowModal} typeModal={typeModal} contactOrClient="contact" clientId={typeModal === 'add' ? clientId : contactId} clients={contacts}/>
       )}
       {showDeleteModal && (
         <ModalDelete clientOrContact="contact" setShowModal={setShowDeleteModal} id={contactId} />
